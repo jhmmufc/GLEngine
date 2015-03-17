@@ -78,10 +78,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioManager.hpp" />
     <ClInclude Include="GameEngine.hpp" />
+    <ClInclude Include="Private\AudioEngineWrapper.hpp" />
+    <ClInclude Include="Private\Utility.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="Private\AudioEngineWrapper.cpp" />
+    <ClCompile Include="Private\Utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

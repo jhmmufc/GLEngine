@@ -33,10 +33,28 @@
     <ClInclude Include="GameEngine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AudioManager.hpp">
+      <Filter>Header Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Private\AudioEngineWrapper.hpp">
+      <Filter>Header Files\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="Private\Utility.hpp">
+      <Filter>Header Files\Private</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\AudioEngineWrapper.cpp">
+      <Filter>Source Files\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Utility.cpp">
+      <Filter>Source Files\Private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
