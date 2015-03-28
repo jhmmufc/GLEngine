@@ -30,7 +30,7 @@ namespace GameEngine
 
 		void AudioEngineWrapper::Play2DSound(const std::string& filename, bool looped, bool startPaused)
 		{
-			if (filename.empty() || !Utility::IO::DoesFileExist(filename))
+			if (filename.empty())
 			{
 				throw std::runtime_error("Invalid file for audio manager");
 			}
@@ -69,7 +69,7 @@ namespace GameEngine
 
 		void AudioEngineWrapper::PlaySoundEffect(const std::string& filename)
 		{
-			if (filename.empty() || !Utility::IO::DoesFileExist(filename))
+			if (filename.empty())
 			{
 				throw std::runtime_error("Invalid sound effect for audio manager");
 			}

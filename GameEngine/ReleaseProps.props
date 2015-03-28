@@ -9,7 +9,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)Release;$(SolutionDir)Dependancies/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>GameEngine.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GameEngine.lib;irrKlang.lib;SDL2.lib;SDL2main.lib;SDL2_ttf.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

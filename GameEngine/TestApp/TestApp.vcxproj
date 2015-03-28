@@ -10,6 +10,27 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Gun.cpp" />
+    <ClCompile Include="Human.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Zombie.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Agent.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Gun.h" />
+    <ClInclude Include="Human.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Zombie.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DEEE6C14-7723-44E6-81E1-2EC0DEB9EE6A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -79,9 +100,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

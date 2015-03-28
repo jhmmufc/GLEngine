@@ -25,6 +25,36 @@
     <Filter Include="Source Files\Audio">
       <UniqueIdentifier>{2f179f43-67d5-4236-b890-e9f04f5f2be2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Rendering">
+      <UniqueIdentifier>{7cf21b90-69d0-4a1b-9d0e-37f3e4e7b858}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{116d9c5c-31e7-4779-b998-37e0feaa9642}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Sprites">
+      <UniqueIdentifier>{c73fa1eb-09e4-450d-a4d0-c6ad30666638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sprites">
+      <UniqueIdentifier>{766a32eb-65aa-40c5-832e-ebd147d5894d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ResourceManagement">
+      <UniqueIdentifier>{eabea41d-951c-4d0a-a594-c99f96b3166f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ResourceManagement">
+      <UniqueIdentifier>{f57e8ced-ad24-43d8-ab6e-95000b451cb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{f662f007-b7e3-4dce-9c17-5d21ba893824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{01d39e79-74b9-4337-8fae-f4b6373aface}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Time">
+      <UniqueIdentifier>{e3a43896-af31-42e1-b35c-3f66494cb7e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Time">
+      <UniqueIdentifier>{8f6dd4d4-7e1d-4928-92be-7f834e65254d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -42,6 +72,54 @@
     <ClInclude Include="Private\Utility.hpp">
       <Filter>Header Files\Private</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSLProgram.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTexture.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageLoader.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="PicoPNG.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.hpp">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.hpp">
+      <Filter>Header Files\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.hpp">
+      <Filter>Header Files\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Timing.hpp">
+      <Filter>Header Files\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteFont.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteBatch.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEngine2D.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleBatch2D.hpp">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
@@ -55,6 +133,42 @@
     </ClCompile>
     <ClCompile Include="Private\Utility.cpp">
       <Filter>Source Files\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSLProgram.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Timing.cpp">
+      <Filter>Source Files\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteFont.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteBatch.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEngine.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleBatch2D.cpp">
+      <Filter>Source Files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
