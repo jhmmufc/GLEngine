@@ -232,24 +232,32 @@ namespace GameEngine {
 		void SpriteFont::draw(SpriteBatch& batch, const char* s, glm::vec2 position, glm::vec2 scaling,
 			float depth, ColourRGBA8 tint, Justification just /* = Justification::LEFT */) {
 			glm::vec2 tp = position;
+			tp.y += _fontHeight / 2.0f;
+			scaling.y *= -1.0f;
 			// Apply justification
-			if (just == Justification::MIDDLE) {
+			if (just == Justification::MIDDLE) 
+			{
 				tp.x -= measure(s).x * scaling.x / 2;
 			}
-			else if (just == Justification::RIGHT) {
+			else if (just == Justification::RIGHT) 
+			{
 				tp.x -= measure(s).x * scaling.x;
 			}
-			for (int si = 0; s[si] != 0; si++) {
+			for (int si = 0; s[si] != 0; si++) 
+			{
 				char c = s[si];
-				if (s[si] == '\n') {
+				if (s[si] == '\n') 
+				{
 					tp.y += _fontHeight * scaling.y;
 					tp.x = position.x;
 				}
-				else {
+				else 
+				{
 					// Check for correct glyph
 					int gi = c - _regStart;
 					if (gi < 0 || gi >= _regLength)
 						gi = _regLength;
+
 					glm::vec4 destRect(tp, _glyphs[gi].size * scaling);
 					batch.draw(destRect, _glyphs[gi].uvRect, _texID, depth, tint);
 					tp.x += _glyphs[gi].size.x * scaling.x;

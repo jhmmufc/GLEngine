@@ -43,10 +43,10 @@ void Player::update(const std::vector<std::string>& levelData,
                     float deltaTime) {
 
 	if (_inputManager->IsKeyPressed(SDLK_w)) {
-        _position.y += _speed * deltaTime;
+        _position.y -= _speed * deltaTime;
 	}
 	else if (_inputManager->IsKeyPressed(SDLK_s)) {
-        _position.y -= _speed * deltaTime;
+        _position.y += _speed * deltaTime;
     }
 	if (_inputManager->IsKeyPressed(SDLK_a)) {
         _position.x -= _speed * deltaTime;
@@ -67,7 +67,6 @@ void Player::update(const std::vector<std::string>& levelData,
 
 	glm::vec2 mouseCoords = _inputManager->GetMouseCoords();
     mouseCoords = _camera->ConvertScreenToWorld(mouseCoords);
-
 
     glm::vec2 centerPosition = _position + glm::vec2(AGENT_RADIUS);
 

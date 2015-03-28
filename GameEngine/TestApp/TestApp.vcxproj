@@ -31,6 +31,10 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\textureShading.frag" />
+    <None Include="Shaders\textureShading.vert" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DEEE6C14-7723-44E6-81E1-2EC0DEB9EE6A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
