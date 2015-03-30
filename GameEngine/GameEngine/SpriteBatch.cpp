@@ -107,23 +107,29 @@ namespace GameEngine
 			CreateRenderBatches();
 		}
 
-		void SpriteBatch::Draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColourRGBA8& color)
+		// Adds a sprite to the spritebatch
+		void SpriteBatch::Draw(const Sprite& sprite)
 		{
-			m_glyphs.emplace_back(destRect, uvRect, texture, depth, color);
+			m_glyphs.emplace_back(sprite.DestRect(), sprite.UVRect(), sprite.Texture().ID, sprite.Depth(), sprite.Colour(), sprite.Angle());
 		}
 
-		void SpriteBatch::Draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColourRGBA8& color, float angle) 
+		void SpriteBatch::Draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColourRGBA8& colour)
 		{
-			m_glyphs.emplace_back(destRect, uvRect, texture, depth, color, angle);
+			m_glyphs.emplace_back(destRect, uvRect, texture, depth, colour);
 		}
 
-		void SpriteBatch::Draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColourRGBA8& color, const glm::vec2& dir) 
+		void SpriteBatch::Draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColourRGBA8& colour, float angle)
+		{
+			m_glyphs.emplace_back(destRect, uvRect, texture, depth, colour, angle);
+		}
+
+		void SpriteBatch::Draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColourRGBA8& colour, const glm::vec2& dir)
 		{
 			const glm::vec2 right(1.0f, 0.0f);
 			float angle = acos(glm::dot(right, dir));
 			if (dir.y < 0.0f) angle = -angle;
 
-			m_glyphs.emplace_back(destRect, uvRect, texture, depth, color, angle);
+			m_glyphs.emplace_back(destRect, uvRect, texture, depth, colour, angle);
 		}
 
 		void SpriteBatch::RenderBatches() 
