@@ -13,7 +13,7 @@ private:
 	void LoadShaders();
 
 	void ProcessInput();
-	void Update();
+	void Update(float elapsedTime);
 	void Render();
 
 	bool m_running = true;
@@ -32,6 +32,16 @@ private:
 
 	// The camera for our game
 	ge::Rendering::Camera m_camera;
+
+	// The spritebatch for our game
+	ge::Rendering::SpriteBatch m_spriteBatch;
+
+	// A sprite
+	ge::Rendering::Sprite m_sprite;
+	glm::vec2 m_spriteDir;
+
+	// to keep our game loop in time
+	static const ge::Timing::Time TimePerFrame;
 };
 
 #endif

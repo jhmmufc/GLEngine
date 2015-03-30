@@ -18,9 +18,9 @@ namespace GameEngine
 		{
 		public:
 			Sprite() = default;
-			Sprite(const std::string& filename, GameEngine::GameContext& context, const glm::vec4& destRect, const glm::vec4& uvRect, float depth, float angle, const GameEngine::Rendering::ColourRGBA8& colour);
+			Sprite(const std::string& filename, GameEngine::GameContext& context, const glm::vec4& destRect, const glm::vec4& uvRect, float depth, float angle, const GameEngine::Rendering::ColourRGBA8& colour, bool flip = true);
 
-			void Load(const std::string& filename, GameEngine::GameContext& context, const glm::vec4& destRect, const glm::vec4& uvRect, float depth, float angle, const GameEngine::Rendering::ColourRGBA8& colour);
+			void Load(const std::string& filename, GameEngine::GameContext& context, const glm::vec4& destRect, const glm::vec4& uvRect, float depth, float angle, const GameEngine::Rendering::ColourRGBA8& colour, bool flip = true);
 
 			void Move(const glm::vec2& pos)
 			{

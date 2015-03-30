@@ -18,7 +18,7 @@ namespace GameEngine
 			if (m_updateMatrix)
 			{
 				//Camera Translation
-				glm::vec3 translate(-m_position.x + m_screenWidth / 2.0f, -m_position.y + m_screenHeight / 2.0f, 0.0f);
+				glm::vec3 translate(-m_position.x, -m_position.y, 0.0f);
 				m_cameraMatrix = glm::translate(m_orthoMatrix, translate);
 
 				//Camera Scale
@@ -52,8 +52,8 @@ namespace GameEngine
 			glm::vec2 scaledScreenDimensions = glm::vec2(m_screenWidth, m_screenHeight) / (m_scale);
 
 			// The minimum distance before a collision occurs
-			const float MIN_DISTANCE_X = dimensions.x / 2.0f + scaledScreenDimensions.x / 2.0f;
-			const float MIN_DISTANCE_Y = dimensions.y / 2.0f + scaledScreenDimensions.y / 2.0f;
+			const float MIN_DISTANCE_X = dimensions.x / 2.0f + scaledScreenDimensions.x;
+			const float MIN_DISTANCE_Y = dimensions.y / 2.0f + scaledScreenDimensions.y;
 
 			// Center position of the parameters
 			glm::vec2 centerPos = position + dimensions / 2.0f;
@@ -63,13 +63,12 @@ namespace GameEngine
 			glm::vec2 distVec = centerPos - centerCameraPos;
 
 			// Get the depth of the collision
-			float xDepth = MIN_DISTANCE_X - abs(distVec.x);
-			float yDepth = MIN_DISTANCE_Y - abs(distVec.y);
+			float xDepth = MIN_DISTANCE_X - (distVec.x);
+			float yDepth = MIN_DISTANCE_Y - (distVec.y);
 
 			// If both the depths are > 0, then we collided
-			if (xDepth > 0 && yDepth > 0) 
+			if ((xDepth > 0 && yDepth > 0) && (xDepth <= m_screenWidth && yDepth <= m_screenHeight)) 
 			{
-				// There was a collision
 				return true;
 			}
 
