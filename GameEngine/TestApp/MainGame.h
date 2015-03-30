@@ -90,7 +90,7 @@ private:
     int m_numHumansKilled; ///< Humans killed by player
     int m_numZombiesKilled; ///< Zombies killed by player
 
-	ge::Rendering::SpriteFont* m_spriteFont;
+	ge::Rendering::SpriteFont m_spriteFont;
 
 	ge::GameContext m_gameContext;
 

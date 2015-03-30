@@ -41,7 +41,7 @@ namespace GameEngine
 			{
 			}
 
-			void Load(const std::string& font, int size, char cs, char ce);
+			void Load(const std::string& font, int size, char cs = FIRST_PRINTABLE_CHAR, char ce = LAST_PRINTABLE_CHAR);
 
 			~SpriteFont()
 			{
