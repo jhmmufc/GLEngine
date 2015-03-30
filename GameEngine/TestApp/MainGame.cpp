@@ -427,11 +427,11 @@ void MainGame::drawHud() {
     m_hudSpriteBatch.Begin();
 
     sprintf_s(buffer, "Num Humans %d", m_humans.size());
-    m_spriteFont->draw(m_hudSpriteBatch, buffer, glm::vec2(0, 0),
+    m_spriteFont->Draw(m_hudSpriteBatch, buffer, glm::vec2(0, 0),
                       glm::vec2(0.5), 0.0f, GameEngine::Rendering::ColourRGBA8(255, 255, 255, 255));
 
     sprintf_s(buffer, "Num Zombies %d", m_zombies.size());
-    m_spriteFont->draw(m_hudSpriteBatch, buffer, glm::vec2(0, 36),
+    m_spriteFont->Draw(m_hudSpriteBatch, buffer, glm::vec2(0, 36),
                       glm::vec2(0.5), 0.0f, GameEngine::Rendering::ColourRGBA8(255, 255, 255, 255));
 
     m_hudSpriteBatch.End();

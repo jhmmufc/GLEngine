@@ -12,16 +12,14 @@ namespace GameEngine
 {
 	namespace Rendering 
 	{
-
 		class GLTexture;
 		class SpriteBatch;
 
 		struct CharGlyph 
 		{
-		public:
-			char character;
-			glm::vec4 uvRect;
-			glm::vec2 size;
+			char Character;
+			glm::vec4 UVRect;
+			glm::vec2 Size;
 		};
 
 #define FIRST_PRINTABLE_CHAR ((char)32)
@@ -36,33 +34,43 @@ namespace GameEngine
 		class SpriteFont 
 		{
 		public:
-			SpriteFont(const char* font, int size, char cs, char ce);
-			SpriteFont(const char* font, int size) :
+			SpriteFont() = default;
+			SpriteFont(const std::string& font, int size, char cs, char ce);
+			SpriteFont(const std::string& font, int size) :
 				SpriteFont(font, size, FIRST_PRINTABLE_CHAR, LAST_PRINTABLE_CHAR) 
 			{
 			}
-			/// Destroys the font resources
-			void dispose();
 
-			int getFontHeight() const 
+			void Load(const std::string& font, int size, char cs, char ce);
+
+			~SpriteFont()
 			{
-				return _fontHeight;
+				if (m_texID != 0)
+				{
+					glDeleteTextures(1, &m_texID);
+					m_texID = 0;
+				}
+			}
+
+			int GetFontHeight() const 
+			{
+				return m_fontHeight;
 			}
 
 			/// Measures the dimensions of the text
-			glm::vec2 measure(const char* s);
+			glm::vec2 Measure(const std::string& s);
 
 			/// Draws using a spritebatch
-			void draw(SpriteBatch& batch, const char* s, glm::vec2 position, glm::vec2 scaling,
+			void Draw(SpriteBatch& batch, const std::string& s, const glm::vec2& position, glm::vec2 scaling,
 				float depth, ColourRGBA8 tint, Justification just = Justification::LEFT);
 		private:
-			static std::vector<int>* createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w);
+			static std::vector<std::vector<int>> CreateRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w);
 
-			int _regStart, _regLength;
-			CharGlyph* _glyphs;
-			int _fontHeight;
+			int m_regStart, m_regLength;
+			std::vector<CharGlyph> m_glyphs;
+			int m_fontHeight;
 
-			unsigned int _texID;
+			unsigned int m_texID;
 		};
 	}
 }
