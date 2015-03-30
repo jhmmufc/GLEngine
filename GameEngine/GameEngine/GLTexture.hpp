@@ -7,8 +7,9 @@ namespace GameEngine
 {
 	namespace Rendering
 	{
-		struct GLTexture
+		class GLTexture
 		{
+		public:
 			GLuint ID;
 			int Width;
 			int Height;

@@ -14,11 +14,11 @@ namespace GameEngine
 			{
 				bool ReadFileToBuffer(const std::string& filePath, std::vector<unsigned char>& buffer);
 			}
-		}
 
-		namespace Error
-		{
-			void FatalError(const std::string& errorString);
+			namespace Error
+			{
+				void FatalError(const std::string& errorString);
+			}
 		}
 	}
 }

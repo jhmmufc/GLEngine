@@ -93,5 +93,5 @@ Level::~Level()
 
 
 void Level::draw() {
-    _spriteBatch.renderBatch();
+	_spriteBatch.renderBatch();
 }

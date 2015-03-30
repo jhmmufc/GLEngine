@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_ENGINE_IMAGE_LOADER_HPP
+#define GAME_ENGINE_IMAGE_LOADER_HPP
 
 #include "Private/Utility.hpp"
 #include "GLTexture.hpp"
@@ -23,14 +24,14 @@ namespace GameEngine
 
 				if (!Private::Utility::IO::ReadFileToBuffer(filePath, in))
 				{
-					//Private::Error::FatalError("Failed to load PNG file to buffer!");
+					Private::Utility::Error::FatalError("Failed to load PNG file to buffer!");
 				}
 
 				int status = PicoPNG::DecodePNG(out, width, height, &in[0], in.size());
 
 				if (status != 0)
 				{
-					//Private::Error::FatalError("DecodePNG with error " + std::to_string(status));
+					Private::Utility::Error::FatalError("DecodePNG with error " + std::to_string(status));
 				}
 
 				glGenTextures(1, &texture.ID);
@@ -57,3 +58,4 @@ namespace GameEngine
 	}
 }
 
+#endif

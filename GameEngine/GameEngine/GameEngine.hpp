@@ -11,13 +11,15 @@
 #include "ResourceManager.hpp"
 #include "TextureManager.hpp"
 #include "Window.hpp"
-#include "Timing.hpp"
 #include "Vertex.hpp"
 #include "Sprite.hpp"
 #include "SpriteBatch.hpp"
 #include "SpriteFont.hpp"
 #include "ParticleBatch2D.hpp"
 #include "ParticleEngine2D.hpp"
+#include "Time.hpp"
+#include "Clock.hpp"
+#include "GameContext.hpp"
 
 #include <SDL/SDL.h>
 #include <GL/glew.h>

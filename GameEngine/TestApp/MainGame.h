@@ -6,6 +6,8 @@
 #include "Level.h"
 #include "Bullet.h"
 
+#include <memory>
+
 class Zombie;
 
 enum class GameState 
@@ -62,8 +64,6 @@ private:
     
 	ge::Rendering::GLSLProgram m_textureProgram; ///< The shader program
 
-	ge::Input::InputManager m_inputManager; ///< Handles input
-
 	ge::Rendering::Camera m_camera; ///< Main Camera
 	ge::Rendering::Camera m_hudCamera; ///< Hud Camera
 
@@ -71,7 +71,7 @@ private:
 	ge::Rendering::SpriteBatch m_hudSpriteBatch;
 
 	ge::Rendering::ParticleEngine2D m_particleEngine;
-	ge::Rendering::ParticleBatch2D* m_bloodParticleBatch;
+	std::shared_ptr<ge::Rendering::ParticleBatch2D> m_bloodParticleBatch;
 
     std::vector<Level*> m_levels; ///< vector of all levels
 
@@ -92,10 +92,10 @@ private:
 
 	ge::Rendering::SpriteFont* m_spriteFont;
 
-	ge::ResourceManagement::ResourceManager m_resourceManager;
-
-	ge::Audio::AudioManager m_audioManager;
+	ge::GameContext m_gameContext;
 
     GameState m_gameState;
+
+	static const ge::Timing::Time TimePerFrame;
 };
 

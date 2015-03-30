@@ -6,7 +6,6 @@ namespace GameEngine
 	{
 		Rendering::GLTexture TextureManager::GetTexture(const std::string& file_name)
 		{
-			std::lock_guard<std::mutex> lock(m_textureMutex);
 			auto found = m_textureMap.find(file_name);
 
 			if (found != m_textureMap.end())

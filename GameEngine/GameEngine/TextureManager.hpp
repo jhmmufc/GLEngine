@@ -22,7 +22,6 @@ namespace GameEngine
 			Rendering::GLTexture GetTexture(const std::string& file_name);
 		private:
 			std::map<std::string, Rendering::GLTexture> m_textureMap;
-			std::mutex m_textureMutex;
 		};
 	}
 }

@@ -80,6 +80,8 @@
   <ItemGroup>
     <ClInclude Include="AudioManager.hpp" />
     <ClInclude Include="Camera.hpp" />
+    <ClInclude Include="Clock.hpp" />
+    <ClInclude Include="GameContext.hpp" />
     <ClInclude Include="GameEngine.hpp" />
     <ClInclude Include="GLSLProgram.hpp" />
     <ClInclude Include="GLTexture.hpp" />
@@ -95,13 +97,15 @@
     <ClInclude Include="SpriteBatch.hpp" />
     <ClInclude Include="SpriteFont.hpp" />
     <ClInclude Include="TextureManager.hpp" />
-    <ClInclude Include="Timing.hpp" />
+    <ClInclude Include="Time.hpp" />
     <ClInclude Include="Vertex.hpp" />
     <ClInclude Include="Window.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="GameContext.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GLSLProgram.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -114,7 +118,7 @@
     <ClCompile Include="SpriteBatch.cpp" />
     <ClCompile Include="SpriteFont.cpp" />
     <ClCompile Include="TextureManager.cpp" />
-    <ClCompile Include="Timing.cpp" />
+    <ClCompile Include="Time.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

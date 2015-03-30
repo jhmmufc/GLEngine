@@ -14,14 +14,14 @@ namespace GameEngine
 
 			if (shader == 0)
 			{
-				//Private::Error::FatalError("Shader " + path + " failed to be created!");
+				Private::Utility::Error::FatalError("Shader " + path + " failed to be created!");
 			}
 
 			std::ifstream file(path);
 
 			if (file.fail())
 			{
-				//Private::Error::FatalError("Failed to open file " + path);
+				Private::Utility::Error::FatalError("Failed to open file " + path);
 			}
 
 			// Read all the data from the file into one file
@@ -57,7 +57,7 @@ namespace GameEngine
 				glDeleteShader(shader);
 
 				std::printf("%s\n", &errorLog[0]);
-				//Private::Error::FatalError("Shader failed to compile " + path);
+				Private::Utility::Error::FatalError("Shader failed to compile " + path);
 			}
 		}
 
@@ -93,7 +93,7 @@ namespace GameEngine
 				glDeleteShader(m_fragmentShaderID);
 
 				std::printf("%s\n", &errorLog[0]);
-				//Private::Error::FatalError("Program failed to link");
+				Private::Utility::Error::FatalError("Program failed to link");
 			}
 
 			glDetachShader(m_programID, m_vertexShaderID);
@@ -114,7 +114,7 @@ namespace GameEngine
 
 			if (uniformLocation == GL_INVALID_INDEX)
 			{
-				//Private::Error::FatalError("Uniform " + uniformName + " not found in shader");
+				Private::Utility::Error::FatalError("Uniform " + uniformName + " not found in shader");
 			}
 
 			return uniformLocation;

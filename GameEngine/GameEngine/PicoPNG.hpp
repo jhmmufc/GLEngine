@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_ENGINE_PICO_PNG_HPP
+#define GAME_ENGINE_PICO_PNG_HPP
 
 #include <vector>
 
@@ -518,4 +519,6 @@ namespace GameEngine
 		}
 	}
 }
+
+#endif
 

@@ -41,7 +41,7 @@ namespace GameEngine
 			// Ensure that the window has been created
 			if (!m_window)
 			{
-				//Private::Error::FatalError("SDL window could not be created!");
+				Private::Utility::Error::FatalError("SDL window could not be created!");
 			}
 
 			// Retrieve a openGL context
@@ -50,7 +50,7 @@ namespace GameEngine
 			// Ensure we have a GL context
 			if (!context)
 			{
-				//Private::Error::FatalError("SDL GL Context could not be created!");
+				Private::Utility::Error::FatalError("SDL GL Context could not be created!");
 			}
 
 			// Initialse GLEW
@@ -60,7 +60,7 @@ namespace GameEngine
 			// ensure glew has been initialsed correctly
 			if (success != GLEW_OK)
 			{
-				//Private::Error::FatalError("Could not initialse GLEW");
+				Private::Utility::Error::FatalError("Could not initialse GLEW");
 			}
 
 			// Get the openGL version

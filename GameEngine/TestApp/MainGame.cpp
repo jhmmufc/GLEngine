@@ -12,9 +12,11 @@
 #include "Gun.h"
 #include "Zombie.h"
 
-const float HUMAN_SPEED = 1.0f;
-const float ZOMBIE_SPEED = 1.3f;
-const float PLAYER_SPEED = 5.0f;
+const ge::Timing::Time MainGame::TimePerFrame = ge::Timing::Seconds(1.0f / 60.0f);
+
+const float HUMAN_SPEED = 150.0f;
+const float ZOMBIE_SPEED = 100.0f;
+const float PLAYER_SPEED = 300.0f;
 
 MainGame::MainGame()  :
     m_screenWidth(800),
@@ -30,14 +32,14 @@ MainGame::MainGame()  :
 
 MainGame::~MainGame() {
     // Don't forget to delete the levels!
-    for (int i = 0; i < m_levels.size(); i++) {
+    for (size_t i = 0; i < m_levels.size(); i++) {
         delete m_levels[i];
     }
     // Don't forget to delete the humans and zombies!
-    for (int i = 0; i < m_humans.size(); i++) {
+	for (size_t i = 0; i < m_humans.size(); i++) {
         delete m_humans[i];
     }
-    for (int i = 0; i < m_zombies.size(); i++) {
+	for (size_t i = 0; i < m_zombies.size(); i++) {
         delete m_zombies[i];
     }
 }
@@ -77,29 +79,29 @@ void MainGame::initSystems() {
     m_hudCamera.SetPosition(glm::vec2(m_screenWidth / 2, m_screenHeight / 2));
 
     // Initialize particles
-	m_bloodParticleBatch = new ge::Rendering::ParticleBatch2D;
+	m_bloodParticleBatch = std::make_shared<ge::Rendering::ParticleBatch2D>();
 
     // Initialize the particle batch and use a lambda function to define the update
-    m_bloodParticleBatch->init(1000, 0.05f,
-								m_resourceManager.GetTexture("Textures/particle.png"),
+    m_bloodParticleBatch->Init(1000, 2.0f,
+								m_gameContext.GetResourceManager().GetTexture("Textures/particle.png"),
 							   [](ge::Rendering::Particle2D& particle, float deltaTime) {
-        particle.position += particle.velocity * deltaTime;
-        particle.color.A = (GLubyte)(particle.life * 255.0f);
+        particle.Position += particle.Velocity * deltaTime * 100.0f;
+        particle.Colour.A = (GLubyte)(particle.Life * 255.0f);
     });
 
-    m_particleEngine.addParticleBatch(m_bloodParticleBatch);
+    m_particleEngine.AddParticleBatch(m_bloodParticleBatch);
 
-	m_audioManager.Play2DSound("Sound/XYZ.ogg", true);
+	m_gameContext.GetAudioManager().Play2DSound("Sound/XYZ.ogg", true);
 }
 
 void MainGame::initLevel() {
     // Level 1
-	m_levels.push_back(new Level("Levels/level1.txt", m_resourceManager));
+	m_levels.push_back(new Level("Levels/level1.txt", m_gameContext.GetResourceManager()));
     m_currentLevel = 0;
 
     m_player = new Player();
-	auto playerTexture = m_resourceManager.GetTexture("Textures/player.png");
-    m_player->init(PLAYER_SPEED, m_levels[m_currentLevel]->getStartPlayerPos(), &m_inputManager, &m_camera, &m_bullets, playerTexture);
+	auto playerTexture = m_gameContext.GetResourceManager().GetTexture("Textures/player.png");
+	m_player->init(PLAYER_SPEED, m_levels[m_currentLevel]->getStartPlayerPos(), &m_gameContext.GetInputManager(), &m_camera, &m_bullets, playerTexture);
 
     m_humans.push_back(m_player);
 
@@ -110,7 +112,7 @@ void MainGame::initLevel() {
     std::uniform_int_distribution<int> randY(2, m_levels[m_currentLevel]->getHeight() - 2);
 
     // Add all the random humans
-	auto humanTex = m_resourceManager.GetTexture("Textures/human.png");
+	auto humanTex = m_gameContext.GetResourceManager().GetTexture("Textures/human.png");
     for (int i = 0; i < m_levels[m_currentLevel]->getNumHumans(); i++) {
         m_humans.push_back(new Human);
         glm::vec2 pos(randX(randomEngine) * TILE_WIDTH, randY(randomEngine) * TILE_WIDTH);
@@ -119,18 +121,18 @@ void MainGame::initLevel() {
 
     // Add the zombies
     const std::vector<glm::vec2>& zombiePositions = m_levels[m_currentLevel]->getZombieStartPositions();
-	auto zombieTex = m_resourceManager.GetTexture("Textures/zombie.png");
+	auto zombieTex = m_gameContext.GetResourceManager().GetTexture("Textures/zombie.png");
 	for (int i = 0; i < zombiePositions.size(); i++) {
         m_zombies.push_back(new Zombie);
         m_zombies.back()->init(ZOMBIE_SPEED, zombiePositions[i], zombieTex);
     }
 
     // Set up the players guns
-    const float BULLET_SPEED = 20.0f;
-	auto bulletTex = m_resourceManager.GetTexture("Textures/circle.png");
-	m_player->addGun(new Gun("Magnum", 10, 1, 5.0f, 30, BULLET_SPEED, bulletTex, "Sound/shots/pistol.wav", m_audioManager));
-	m_player->addGun(new Gun("Shotgun", 30, 12, 20.0f, 4, BULLET_SPEED, bulletTex, "Sound/shots/shotgun.wav", m_audioManager));
-	m_player->addGun(new Gun("MP5", 2, 1, 10.0f, 20, BULLET_SPEED, bulletTex, "Sound/shots/cg1.wav", m_audioManager));
+    const float BULLET_SPEED = 1000.0f;
+	auto bulletTex = m_gameContext.GetResourceManager().GetTexture("Textures/circle.png");
+	m_player->addGun(new Gun("Magnum", 10, 1, 5.0f, 30, BULLET_SPEED, bulletTex, "Sound/shots/pistol.wav", m_gameContext.GetAudioManager()));
+	m_player->addGun(new Gun("Shotgun", 30, 12, 20.0f, 4, BULLET_SPEED, bulletTex, "Sound/shots/shotgun.wav", m_gameContext.GetAudioManager()));
+	m_player->addGun(new Gun("MP5", 2, 1, 10.0f, 20, BULLET_SPEED, bulletTex, "Sound/shots/cg1.wav", m_gameContext.GetAudioManager()));
 }
 
 void MainGame::initShaders() {
@@ -144,52 +146,33 @@ void MainGame::initShaders() {
 
 void MainGame::gameLoop() {
     
-    // Some helpful constants.
-    const float DESIRED_FPS = 60.0f; // FPS the game is designed to run at
-    const int MAX_PHYSICS_STEPS = 6; // Max number of physics steps per frame
-    const float MS_PER_SECOND = 1000; // Number of milliseconds in a second
-    const float DESIRED_FRAMETIME = MS_PER_SECOND / DESIRED_FPS; // The desired frame time per frame
-    const float MAX_DELTA_TIME = 1.0f; // Maximum size of deltaTime
-
-    // Used to cap the FPS
-    GameEngine::Time::FPSLimiter fpsLimiter;
-	fpsLimiter.SetMaxFPS(DESIRED_FPS);
+	ge::Timing::Clock clock;
+	ge::Timing::Time timeSinceLastUpdate = ge::Timing::Time::Zero;
 
     // Zoom out the camera by 3x
     const float CAMERA_SCALE = 1.0f / 3.0f;
     m_camera.SetScale(CAMERA_SCALE);
 
-    // Start our previousTicks variable
-    float previousTicks = SDL_GetTicks();
-
     // Main loop
-    while (m_gameState == GameState::PLAY) {
-        fpsLimiter.Begin();
+    while (m_gameState == GameState::PLAY) 
+	{
+		ge::Timing::Time elapsedTime = clock.Restart();
 
-        // Calculate the frameTime in milliseconds
-        float newTicks = SDL_GetTicks();
-        float frameTime = newTicks - previousTicks;
-        previousTicks = newTicks; // Store newTicks in previousTicks so we can use it next frame
-        // Get the total delta time
-        float totalDeltaTime = frameTime / DESIRED_FRAMETIME;
+		timeSinceLastUpdate += elapsedTime;
 
         checkVictory();
 
         processInput();
         
-        int i = 0; // This counter makes sure we don't spiral to death!
         // Loop while we still have steps to process.
-        while (totalDeltaTime > 0.0f && i < MAX_PHYSICS_STEPS) {
-            // The deltaTime should be the the smaller of the totalDeltaTime and MAX_DELTA_TIME
-            float deltaTime = std::min(totalDeltaTime, MAX_DELTA_TIME);
+		while (timeSinceLastUpdate > TimePerFrame)
+		{
+			timeSinceLastUpdate -= TimePerFrame;
+
             // Update all physics here and pass in deltaTime
-            updateAgents(deltaTime);
-            updateBullets(deltaTime);
-            m_particleEngine.update(deltaTime);
-            // Since we just took a step that is length deltaTime, subtract from totalDeltaTime
-            totalDeltaTime -= deltaTime;
-            // Increment our frame counter so we can limit steps to MAX_PHYSICS_STEPS
-            i++;
+			updateAgents(TimePerFrame.AsSeconds());
+			updateBullets(TimePerFrame.AsSeconds());
+			m_particleEngine.Update(TimePerFrame.AsSeconds());
         }
 
         // Make sure the camera is bound to the player position
@@ -198,9 +181,6 @@ void MainGame::gameLoop() {
         m_hudCamera.Update();
 
         drawGame();
-
-        // End the frame, limit the FPS, and get the current FPS.
-        m_fps = fpsLimiter.End();
     }
 }
 
@@ -232,7 +212,7 @@ void MainGame::updateAgents(float deltaTime) {
             if (m_zombies[i]->collideWithAgent(m_humans[j])) {
                 // Add the new zombie
                 m_zombies.push_back(new Zombie);
-				auto zombieTex = m_resourceManager.GetTexture("Textures/zombie.png");
+				auto zombieTex = m_gameContext.GetResourceManager().GetTexture("Textures/zombie.png");
                 m_zombies.back()->init(ZOMBIE_SPEED, m_humans[j]->getPosition(), zombieTex);
                 // Delete the human
                 delete m_humans[j];
@@ -368,7 +348,7 @@ void MainGame::processInput() {
 	}
 
 	// Add all the events to the event manager
-	m_inputManager.Update(events);
+	m_gameContext.GetInputManager().Update(events);
 }
 
 void MainGame::drawGame() {
@@ -425,7 +405,7 @@ void MainGame::drawGame() {
     m_agentSpriteBatch.renderBatch();
 
     // Render the particles
-    m_particleEngine.draw(&m_agentSpriteBatch);
+    m_particleEngine.Draw(m_agentSpriteBatch);
 
     // Render the heads up display
     drawHud();
@@ -455,7 +435,7 @@ void MainGame::drawHud() {
                       glm::vec2(0.5), 0.0f, GameEngine::Rendering::ColourRGBA8(255, 255, 255, 255));
 
     m_hudSpriteBatch.end();
-    m_hudSpriteBatch.renderBatch();
+	m_hudSpriteBatch.renderBatch();
 }
 
 void MainGame::addBlood(const glm::vec2& position, int numParticles) {
@@ -467,6 +447,6 @@ void MainGame::addBlood(const glm::vec2& position, int numParticles) {
     GameEngine::Rendering::ColourRGBA8 col(255, 0, 0, 255);
 
     for (int i = 0; i < numParticles; i++) {
-        m_bloodParticleBatch->addParticle(position, glm::rotate(vel, randAngle(randEngine)), col, 30.0f);
+        m_bloodParticleBatch->AddParticle(position, glm::rotate(vel, randAngle(randEngine)), col, 30.0f);
     }
 }
