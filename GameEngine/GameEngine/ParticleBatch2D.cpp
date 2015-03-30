@@ -4,17 +4,6 @@ namespace GameEngine
 {
 	namespace Rendering
 	{
-		ParticleBatch2D::ParticleBatch2D() 
-		{
-			// Empty
-		}
-
-
-		ParticleBatch2D::~ParticleBatch2D()
-		{
-			
-		}
-
 		void ParticleBatch2D::Init(int maxParticles,
 			float decayRate,
 			GLTexture texture,
@@ -51,7 +40,7 @@ namespace GameEngine
 				if (p.Life > 0.0f) 
 				{
 					glm::vec4 destRect(p.Position.x, p.Position.y, p.Width, p.Width);
-					spriteBatch.draw(destRect, uvRect, m_texture.ID, 0.0f, p.Colour);
+					spriteBatch.Draw(destRect, uvRect, m_texture.ID, 0.0f, p.Colour);
 				}
 			}
 		}

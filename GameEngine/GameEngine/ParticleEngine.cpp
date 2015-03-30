@@ -24,10 +24,10 @@ namespace GameEngine
 		{
 			for (auto& b : m_batches) 
 			{
-				spriteBatch.begin();
+				spriteBatch.Begin();
 				b->Draw(spriteBatch);
-				spriteBatch.end();
-				spriteBatch.renderBatch();
+				spriteBatch.End();
+				spriteBatch.RenderBatches();
 			}
 		}
 	}

@@ -98,7 +98,7 @@ namespace GameEngine {
 			int ly = padding;
 			for (int ri = 0; ri < bestRows; ri++) {
 				int lx = padding;
-				for (int ci = 0; ci < bestPartition[ri].size(); ci++) {
+				for (size_t ci = 0; ci < bestPartition[ri].size(); ci++) {
 					int gi = bestPartition[ri][ci];
 
 					SDL_Surface* glyphSurface = TTF_RenderGlyph_Blended(f, (char)(cs + gi), fg);
@@ -259,7 +259,7 @@ namespace GameEngine {
 						gi = _regLength;
 
 					glm::vec4 destRect(tp, _glyphs[gi].size * scaling);
-					batch.draw(destRect, _glyphs[gi].uvRect, _texID, depth, tint);
+					batch.Draw(destRect, _glyphs[gi].uvRect, _texID, depth, tint);
 					tp.x += _glyphs[gi].size.x * scaling.x;
 				}
 			}

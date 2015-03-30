@@ -31,8 +31,8 @@ namespace GameEngine
 		class ParticleBatch2D 
 		{
 		public:
-			ParticleBatch2D();
-			~ParticleBatch2D();
+			ParticleBatch2D() = default;
+			~ParticleBatch2D() = default;
 
 			void Init(int maxParticles,
 				float decayRate,

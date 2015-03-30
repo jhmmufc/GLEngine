@@ -9,7 +9,6 @@ namespace GameEngine
 			m_screenWidth = screenWidth;
 			m_screenHeight = screenHeight;
 
-			// TODO convert to XNA coords where its 0 0 top left
 			m_orthoMatrix = glm::ortho(0.0f, static_cast<float>(m_screenWidth), static_cast<float>(m_screenHeight), 0.0f);
 		}
 
@@ -33,9 +32,6 @@ namespace GameEngine
 		glm::vec2 Camera::ConvertScreenToWorld(const glm::vec2& screenCoords)
 		{
 			auto result = screenCoords;
-
-			// Invert the y direction
-			//result.y = m_screenHeight - result.y;
 
 			// Make it so that 0 is the center
 			result -= glm::vec2(m_screenWidth / 2.0f, m_screenHeight / 2.0f);

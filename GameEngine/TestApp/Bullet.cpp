@@ -39,7 +39,7 @@ void Bullet::draw(GameEngine::Rendering::SpriteBatch& spriteBatch) {
     color.B = 75;
     color.A = 255;
 
-    spriteBatch.draw(destRect, uvRect, m_tex.ID, 0.0f, color);
+    spriteBatch.Draw(destRect, uvRect, m_tex.ID, 0.0f, color);
 }
 
 bool Bullet::collideWithAgent(Agent* agent) {

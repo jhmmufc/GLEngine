@@ -43,7 +43,7 @@ Human* Zombie::getNearestHuman(std::vector<Human*>& humans) {
     Human* closestHuman = nullptr;
     float smallestDistance = 9999999.0f;
 
-    for (int i = 0; i < humans.size(); i++) {
+	for (size_t i = 0; i < humans.size(); i++) {
         // Get the direction vector
         glm::vec2 distVec = humans[i]->getPosition() - _position;
         // Get distance

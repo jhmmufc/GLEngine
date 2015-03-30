@@ -67,8 +67,8 @@ void MainGame::initSystems() {
     initShaders();
 
     // Initialize our spritebatch
-    m_agentSpriteBatch.init();
-    m_hudSpriteBatch.init();
+    m_agentSpriteBatch.Init();
+    m_hudSpriteBatch.Init();
 
     // Initialize sprite font
 	m_spriteFont = new ge::Rendering::SpriteFont("Fonts/chintzy.ttf", 64);
@@ -122,7 +122,7 @@ void MainGame::initLevel() {
     // Add the zombies
     const std::vector<glm::vec2>& zombiePositions = m_levels[m_currentLevel]->getZombieStartPositions();
 	auto zombieTex = m_gameContext.GetResourceManager().GetTexture("Textures/zombie.png");
-	for (int i = 0; i < zombiePositions.size(); i++) {
+	for (size_t i = 0; i < zombiePositions.size(); i++) {
         m_zombies.push_back(new Zombie);
         m_zombies.back()->init(ZOMBIE_SPEED, zombiePositions[i], zombieTex);
     }
@@ -186,7 +186,7 @@ void MainGame::gameLoop() {
 
 void MainGame::updateAgents(float deltaTime) {
     // Update all humans
-    for (int i = 0; i < m_humans.size(); i++) {
+	for (size_t i = 0; i < m_humans.size(); i++) {
         m_humans[i]->update(m_levels[m_currentLevel]->getLevelData(),
                            m_humans,
                            m_zombies,
@@ -194,7 +194,7 @@ void MainGame::updateAgents(float deltaTime) {
     }
 
     // Update all zombies
-    for (int i = 0; i < m_zombies.size(); i++) {
+	for (size_t i = 0; i < m_zombies.size(); i++) {
         m_zombies[i]->update(m_levels[m_currentLevel]->getLevelData(),
                            m_humans,
                            m_zombies,
@@ -202,13 +202,13 @@ void MainGame::updateAgents(float deltaTime) {
     }
 
     // Update Zombie collisions
-    for (int i = 0; i < m_zombies.size(); i++) {
+	for (size_t i = 0; i < m_zombies.size(); i++) {
         // Collide with other zombies
-        for (int j = i + 1; j < m_zombies.size(); j++) {
+		for (size_t j = i + 1; j < m_zombies.size(); j++) {
             m_zombies[i]->collideWithAgent(m_zombies[j]);
         }
         // Collide with humans
-        for (int j = 1; j < m_humans.size(); j++) {
+		for (size_t j = 1; j < m_humans.size(); j++) {
             if (m_zombies[i]->collideWithAgent(m_humans[j])) {
                 // Add the new zombie
                 m_zombies.push_back(new Zombie);
@@ -228,9 +228,9 @@ void MainGame::updateAgents(float deltaTime) {
     }
 
     // Update Human collisions
-    for (int i = 0; i < m_humans.size(); i++) {
+	for (size_t i = 0; i < m_humans.size(); i++) {
         // Collide with other humans
-        for (int j = i + 1; j < m_humans.size(); j++) {
+		for (size_t j = i + 1; j < m_humans.size(); j++) {
             m_humans[i]->collideWithAgent(m_humans[j]);
         }
     }
@@ -240,7 +240,7 @@ void MainGame::updateAgents(float deltaTime) {
 
 void MainGame::updateBullets(float deltaTime) {
     // Update and collide with world
-    for (int i = 0; i < m_bullets.size(); ) {
+    for (size_t i = 0; i < m_bullets.size(); ) {
         // If update returns true, the bullet collided with a wall
         if (m_bullets[i].update(m_levels[m_currentLevel]->getLevelData(), deltaTime)) {
             m_bullets[i] = m_bullets.back();
@@ -253,10 +253,10 @@ void MainGame::updateBullets(float deltaTime) {
     bool wasBulletRemoved;
 
     // Collide with humans and zombies
-    for (int i = 0; i < m_bullets.size(); i++) {
+	for (size_t i = 0; i < m_bullets.size(); i++) {
         wasBulletRemoved = false;
         // Loop through zombies
-        for (int j = 0; j < m_zombies.size(); ) {
+		for (size_t j = 0; j < m_zombies.size();) {
             // Check collision
             if (m_bullets[i].collideWithAgent(m_zombies[j])) {
                 // Add blood
@@ -286,7 +286,7 @@ void MainGame::updateBullets(float deltaTime) {
         }
         // Loop through humans
         if (wasBulletRemoved == false) {
-            for (int j = 1; j < m_humans.size(); ) {
+			for (size_t j = 1; j < m_humans.size();) {
                 // Check collision
                 if (m_bullets[i].collideWithAgent(m_humans[j])) {
                     // Add blood
@@ -375,34 +375,34 @@ void MainGame::drawGame() {
     m_levels[m_currentLevel]->draw();
 
     // Begin drawing agents
-    m_agentSpriteBatch.begin();
+    m_agentSpriteBatch.Begin();
 
     const glm::vec2 agentDims(AGENT_RADIUS * 2.0f);
 
     // Draw the humans
-    for (int i = 0; i < m_humans.size(); i++) {
+	for (size_t i = 0; i < m_humans.size(); i++) {
         if (m_camera.IsBoxInView(m_humans[i]->getPosition(), agentDims)) {
             m_humans[i]->draw(m_agentSpriteBatch);
         }
     }
 
     // Draw the zombies
-    for (int i = 0; i < m_zombies.size(); i++) {
+	for (size_t i = 0; i < m_zombies.size(); i++) {
         if (m_camera.IsBoxInView(m_zombies[i]->getPosition(), agentDims)) {
             m_zombies[i]->draw(m_agentSpriteBatch);
         }
     }
 
     // Draw the bullets
-    for (int i = 0; i < m_bullets.size(); i++) {
+	for (size_t i = 0; i < m_bullets.size(); i++) {
         m_bullets[i].draw(m_agentSpriteBatch);
     }
 
     // End spritebatch creation
-    m_agentSpriteBatch.end();
+    m_agentSpriteBatch.End();
 
     // Render to the screen
-    m_agentSpriteBatch.renderBatch();
+    m_agentSpriteBatch.RenderBatches();
 
     // Render the particles
     m_particleEngine.Draw(m_agentSpriteBatch);
@@ -424,7 +424,7 @@ void MainGame::drawHud() {
     GLint pUniform = m_textureProgram.GetUniformLocation("P");
     glUniformMatrix4fv(pUniform, 1, GL_FALSE, &projectionMatrix[0][0]);
 
-    m_hudSpriteBatch.begin();
+    m_hudSpriteBatch.Begin();
 
     sprintf_s(buffer, "Num Humans %d", m_humans.size());
     m_spriteFont->draw(m_hudSpriteBatch, buffer, glm::vec2(0, 0),
@@ -434,8 +434,8 @@ void MainGame::drawHud() {
     m_spriteFont->draw(m_hudSpriteBatch, buffer, glm::vec2(0, 36),
                       glm::vec2(0.5), 0.0f, GameEngine::Rendering::ColourRGBA8(255, 255, 255, 255));
 
-    m_hudSpriteBatch.end();
-	m_hudSpriteBatch.renderBatch();
+    m_hudSpriteBatch.End();
+	m_hudSpriteBatch.RenderBatches();
 }
 
 void MainGame::addBlood(const glm::vec2& position, int numParticles) {

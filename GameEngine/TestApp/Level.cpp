@@ -20,8 +20,8 @@ Level::Level(const std::string& fileName, GameEngine::ResourceManagement::Resour
         _levelData.emplace_back(tmp);
     }    
     
-    _spriteBatch.init();
-    _spriteBatch.begin();
+    _spriteBatch.Init();
+    _spriteBatch.Begin();
 
     glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
 
@@ -32,8 +32,8 @@ Level::Level(const std::string& fileName, GameEngine::ResourceManagement::Resour
     whiteColor.A = 255;
 
     // Render all the tiles
-    for (int y = 0; y < _levelData.size(); y++) {
-        for (int x = 0; x < _levelData[y].size(); x++) {
+	for (size_t y = 0; y < _levelData.size(); y++) {
+		for (size_t x = 0; x < _levelData[y].size(); x++) {
             // Grab the tile
             char tile = _levelData[y][x];
 
@@ -44,21 +44,21 @@ Level::Level(const std::string& fileName, GameEngine::ResourceManagement::Resour
             switch (tile) {
                 case 'B':
                 case 'R':
-                    _spriteBatch.draw(destRect,
+                    _spriteBatch.Draw(destRect,
                                       uvRect,
 									  resourceManager.GetTexture("Textures/red_bricks.png").ID,
                                       0.0f,
                                       whiteColor);      
                     break;
                 case 'G':
-                    _spriteBatch.draw(destRect,
+					_spriteBatch.Draw(destRect,
                                       uvRect,
 									  resourceManager.GetTexture("Textures/glass.png").ID,
                                       0.0f,
                                       whiteColor);
                     break;
                 case 'L':
-                    _spriteBatch.draw(destRect,
+					_spriteBatch.Draw(destRect,
                                       uvRect,
 									  resourceManager.GetTexture("Textures/light_bricks.png").ID,
                                       0.0f,
@@ -66,8 +66,8 @@ Level::Level(const std::string& fileName, GameEngine::ResourceManagement::Resour
                     break;
                 case '@':
                     _levelData[y][x] = '.'; /// So we dont collide with a @
-                    _startPlayerPos.x = x * TILE_WIDTH;
-                    _startPlayerPos.y = y * TILE_WIDTH;
+                    _startPlayerPos.x = static_cast<float>(x * TILE_WIDTH);
+                    _startPlayerPos.y = static_cast<float>(y * TILE_WIDTH);
                     break;
                 case 'Z':
                     _levelData[y][x] = '.'; /// So we dont collide with a Z
@@ -82,7 +82,7 @@ Level::Level(const std::string& fileName, GameEngine::ResourceManagement::Resour
         }
     }
 
-    _spriteBatch.end();
+    _spriteBatch.End();
 
 }
 
@@ -93,5 +93,5 @@ Level::~Level()
 
 
 void Level::draw() {
-	_spriteBatch.renderBatch();
+	_spriteBatch.RenderBatches();
 }

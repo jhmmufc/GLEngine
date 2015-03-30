@@ -31,12 +31,6 @@
     <Filter Include="Source Files\Rendering">
       <UniqueIdentifier>{116d9c5c-31e7-4779-b998-37e0feaa9642}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Sprites">
-      <UniqueIdentifier>{c73fa1eb-09e4-450d-a4d0-c6ad30666638}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Sprites">
-      <UniqueIdentifier>{766a32eb-65aa-40c5-832e-ebd147d5894d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\ResourceManagement">
       <UniqueIdentifier>{eabea41d-951c-4d0a-a594-c99f96b3166f}</UniqueIdentifier>
     </Filter>
