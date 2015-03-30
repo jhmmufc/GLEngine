@@ -1,9 +1,8 @@
-#include "MainGame.h"
+#include "Game.hpp"
 
 int main(int argc, char** argv) {
 
-    MainGame mainGame;
-    mainGame.run();
+    Game game;
 
-    return 0;
+    return game.Run();
 }

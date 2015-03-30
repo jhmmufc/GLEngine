@@ -127,7 +127,7 @@ namespace GameEngine
 					for (int i = 0; i < cp; i += 4)
 					{
 						float a = sp[i + 3] / 255.0f;
-						sp[i] *= a;
+						sp[i] *= static_cast<unsigned char>(a);
 						sp[i + 1] = sp[i];
 						sp[i + 2] = sp[i];
 					}
