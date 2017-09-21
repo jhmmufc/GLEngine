@@ -9,7 +9,7 @@ HunterGate(
 )
 
 # Create project using C++
-project(gl_engine VERSION 1.0.0 LANGUAGES CXX)
+project(gl_engine VERSION 1.0.0 LANGUAGES C CXX)
 
 # Must use GNUInstallDirs to install libraries into correct
 # locations on all platforms.
