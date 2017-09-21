@@ -24,6 +24,8 @@ set(GLENGINE_SRC
 add_library(gl_engine
     ${GLENGINE_SRC})
 
+target_compile_features(gl_engine PRIVATE cxx_lambda_init_captures)
+    
 # Link to the libs we need
 target_link_libraries(gl_engine
     glew::glew
