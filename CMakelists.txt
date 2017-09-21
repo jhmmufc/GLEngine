@@ -6,3 +6,7 @@ HunterGate(
     SHA1 "55ca271e9276b9973176e3f5a8c0d0dc25e46a53"
 )
 
+project(gl_engine VERSION 1.0.0)
+
+hunter_add_package(Catch)
+find_package(Catch CONFIG REQUIRED)
