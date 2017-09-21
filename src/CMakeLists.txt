@@ -24,13 +24,14 @@ set(GLENGINE_SRC
 add_library(gl_engine
     ${GLENGINE_SRC})
 
-target_compile_features(gl_engine PRIVATE cxx_lambda_init_captures)
+target_compile_features(gl_engine PUBLIC cxx_nullptr cxx_deleted_functions)
     
 # Link to the libs we need
 target_link_libraries(gl_engine
     glew::glew
     SDL2::SDL2
     glm
+    --coverage
 )
 
 # Define headers for this library. PUBLIC headers are used for
