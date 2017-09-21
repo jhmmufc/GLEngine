@@ -1,7 +1,7 @@
 #ifndef GAME_ENGINE_IMAGE_LOADER_HPP
 #define GAME_ENGINE_IMAGE_LOADER_HPP
 
-#include "Private/Utility.hpp"
+#include "Utility.hpp"
 #include "GLTexture.hpp"
 #include "PicoPNG.hpp"
 

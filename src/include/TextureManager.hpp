@@ -1,7 +1,7 @@
 #ifndef GAME_ENGINE_TEXTURE_MANAGER_HPP
 #define GAME_ENGINE_TEXTURE_MANAGER_HPP
 
-#include "Private/Utility.hpp"
+#include "Utility.hpp"
 #include "ImageLoader.hpp"
 #include "GLTexture.hpp"
 

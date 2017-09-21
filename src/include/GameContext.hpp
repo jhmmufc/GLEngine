@@ -3,7 +3,7 @@
 
 #include "ResourceManager.hpp"
 #include "InputManager.hpp"
-#include "AudioManager.hpp"
+//#include "AudioManager.hpp"
 
 namespace GameEngine
 {
@@ -14,11 +14,11 @@ namespace GameEngine
 
 		Input::InputManager& GetInputManager();
 		ResourceManagement::ResourceManager& GetResourceManager();
-		Audio::AudioManager& GetAudioManager();
+		//Audio::AudioManager& GetAudioManager();
 	private:
 		Input::InputManager m_inputManager;
 		ResourceManagement::ResourceManager m_resourceManager;
-		Audio::AudioManager m_audioManager;
+		//Audio::AudioManager m_audioManager;
 	};
 }
 

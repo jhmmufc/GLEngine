@@ -1,5 +1,5 @@
 #include "Window.hpp"
-#include "Private/Utility.hpp"
+#include "Utility.hpp"
 
 #include <iostream>
 

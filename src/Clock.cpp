@@ -1,5 +1,5 @@
 #include "Clock.hpp"
-#include "Private/Utility.hpp"
+#include "Utility.hpp"
 
 namespace GameEngine
 {

@@ -5,7 +5,7 @@
 
 #include <glm/glm.hpp>
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 namespace GameEngine
 {
