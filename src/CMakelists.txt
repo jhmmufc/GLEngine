@@ -1,0 +1,49 @@
+set(GLENGINE_INCLUDE
+    include/AudioEngineWrapper.hpp
+    include/AudioManager.hpp
+    include/Camera.hpp
+    include/Clock.hpp
+    include/GameContext.hpp
+    include/GameEngine.hpp
+    include/GLSLProgram.hpp
+    include/GLTexture.hpp
+    include/ImageLoader.hpp
+    include/InputManager.hpp
+    include/ParticleBatch2D.hpp
+    include/ParticleEngine2D.hpp
+    include/PicoPNG.hpp
+    include/ResourceManager.hpp
+    include/Sprite.hpp
+    include/SpriteBatch.hpp
+    include/SpriteFont.hpp
+    include/TextureManager.hpp
+    include/Time.hpp
+    include/Utility.hpp
+    include/Vertex.hpp
+    include/Window.hpp
+)
+
+set(GLENGINE_SRC
+    AudioEngineWrapper.cpp
+    AudioManager.cpp
+    Camera.cpp
+    Clock.cpp
+    GameContext.cpp
+    GameEngine.cpp
+    GLSLProgram.cpp
+    InputManager.cpp
+    ParticleBatch2D.cpp
+    ParticleEngine.cpp
+    ResourceManager.cpp
+    Sprite.cpp
+    SpriteBatch.cpp
+    SpriteFont.cpp
+    TextureManager.cpp
+    Time.cpp
+    Utility.cpp
+    Window.cpp
+)
+
+add_library(gl_engine
+    ${GLENGINE_INCLUDE}
+    ${GLENGINE_SRC})
