@@ -1,0 +1,8 @@
+set(TESTGAME_SRC
+    Game.hpp
+    Game.cpp
+    main.cpp
+)
+
+add_executable(test_game
+    ${TESTGAME_SRC})
