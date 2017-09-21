@@ -1,7 +1,7 @@
 #ifndef GAME_ENGINE_WINDOW_HPP
 #define GAME_ENGINE_WINDOW_HPP
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #include <GL\glew.h>
 

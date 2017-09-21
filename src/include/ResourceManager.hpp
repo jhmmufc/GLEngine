@@ -10,7 +10,7 @@ namespace GameEngine
 		class ResourceManager
 		{
 		public:
-			Rendering::GLTexture& GetTexture(const std::string& path);
+			Rendering::GLTexture GetTexture(const std::string& path);
 		private:
 			TextureManager m_textureManager;
 		};

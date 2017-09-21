@@ -1,7 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include <GameEngine/GameEngine.hpp>
+#include <GameEngine.hpp>
 
 class Game
 {

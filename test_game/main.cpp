@@ -1,7 +1,9 @@
 #include "Game.hpp"
 
-int main(int argc, char** argv) {
+#undef main
 
+int main(int argc, char** argv) 
+{
     Game game;
 
     return game.Run();

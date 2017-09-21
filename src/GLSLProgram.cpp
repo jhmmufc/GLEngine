@@ -1,5 +1,5 @@
 #include "GLSLProgram.hpp"
-#include "Private/Utility.hpp"
+#include "Utility.hpp"
 
 #include <fstream>
 #include <vector>

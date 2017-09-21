@@ -12,8 +12,8 @@ namespace GameEngine
 		return m_resourceManager;
 	}
 
-	Audio::AudioManager& GameContext::GetAudioManager()
-	{
-		return m_audioManager;
-	}
+	//Audio::AudioManager& GameContext::GetAudioManager()
+	//{
+	//	return m_audioManager;
+	//}
 }

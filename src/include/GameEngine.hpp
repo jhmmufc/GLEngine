@@ -21,7 +21,7 @@
 #include "Clock.hpp"
 #include "GameContext.hpp"
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
