@@ -23,9 +23,7 @@ set(GLENGINE_SRC
 # Define library. Only source files here!
 add_library(gl_engine
     ${GLENGINE_SRC})
-
-target_compile_features(gl_engine PUBLIC cxx_nullptr cxx_deleted_functions)
-    
+   
 # Link to the libs we need
 target_link_libraries(gl_engine
     glew::glew
