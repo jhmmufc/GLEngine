@@ -1,5 +1,5 @@
 # Require a fairly up to date cmake
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.2)
 
 # Add Hunter support for 3rd parties
 include(cmake/HunterGate.cmake)
