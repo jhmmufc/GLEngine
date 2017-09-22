@@ -12,7 +12,7 @@ namespace GameEngine
 		class Clock
 		{
 		public:
-			Clock::Clock() = default;
+			Clock() = default;
 
 			Time GetElapsedTime() const;
 

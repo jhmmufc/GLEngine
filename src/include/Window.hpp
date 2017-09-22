@@ -3,7 +3,7 @@
 
 #include <SDL.h>
 
-#include <GL\glew.h>
+#include <GL/glew.h>
 
 #include <string>
 

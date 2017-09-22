@@ -184,3 +184,5 @@ FakesAssemblies/
 
 build/
 install/
+_builds/
+_logs/

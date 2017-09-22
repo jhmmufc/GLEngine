@@ -1,7 +1,7 @@
 #ifndef GAME_ENGINE_GLSL_PROGRAM_HPP
 #define GAME_ENGINE_GLSL_PROGRAM_HPP
 
-#include <GL\glew.h>
+#include <GL/glew.h>
 
 #include <string>
 
