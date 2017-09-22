@@ -2,6 +2,7 @@
 #define GAME_ENGINE_INPUT_MANAGER_HPP
 
 #include <unordered_map>
+#include <vector>
 
 #include <glm/glm.hpp>
 

@@ -1,8 +1,8 @@
 #ifndef GAME_ENGINE_SPRITE_HPP
 #define GAME_ENGINE_SPRITE_HPP
 
-#include <GL\glew.h>
-#include <glm\glm.hpp>
+#include <GL/glew.h>
+#include <glm/glm.hpp>
 
 #include "GameContext.hpp"
 #include "GLTexture.hpp"
