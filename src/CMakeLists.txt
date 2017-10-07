@@ -18,6 +18,7 @@ set(GLENGINE_SRC
     Time.cpp
     Utility.cpp
     Window.cpp
+    Game.cpp
 )
 
 # Define library. Only source files here!
