@@ -1,10 +1,10 @@
-#include "Game.hpp"
+#include "TestGame.hpp"
 
 #undef main
 
-int main(int argc, char** argv) 
+int main()
 {
-    Game game;
+    TestGame game;
 
     return game.Run();
 }

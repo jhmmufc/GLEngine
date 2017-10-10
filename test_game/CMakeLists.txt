@@ -1,7 +1,7 @@
 # Source for the game
 set(TESTGAME_SRC
-    Game.hpp
-    Game.cpp
+    TestGame.hpp
+    TestGame.cpp
     main.cpp
 )
 

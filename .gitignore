@@ -186,3 +186,5 @@ build/
 install/
 _builds/
 _logs/
+.idea/
+cmake-build-debug/
