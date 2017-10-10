@@ -33,7 +33,7 @@ before_build:
           $env:generator="$env:generator Win64"
       }
       echo generator="$env:generator"
-      cmake ../src -G "$env:generator"
+      cmake -G "$env:generator" ..
 
 build_script:
   - cmake --build . --config %CONFIGURATION% -- /m /v:minimal
