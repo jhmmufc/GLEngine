@@ -150,16 +150,13 @@ namespace GameEngine
 
 		void SpriteBatch::CreateRenderBatches() 
 		{
-			// This will store all the vertices that we need to upload
-			std::vector <Vertex> vertices;
-			// Resize the buffer to the exact size we need so we can treat
-			// it like an array
-			vertices.resize(m_glyphPointers.size() * 6);
+            if (m_glyphPointers.empty())
+            {
+                return;
+            }
 
-			if (m_glyphPointers.empty()) 
-			{
-				return;
-			}
+			// This will store all the vertices that we need to upload
+			std::vector<Vertex> vertices(m_glyphPointers.size() * 6);
 
 			int offset = 0; // current offset
 			int cv = 0; // current vertex

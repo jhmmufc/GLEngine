@@ -59,6 +59,11 @@ namespace GameEngine
 				return m_destRect;
 			}
 
+            auto SetUvRect(const glm::vec4& rect) -> void
+            {
+                m_uvRect = rect;
+            }
+
 			const glm::vec4& UVRect() const
 			{
 				return m_uvRect;

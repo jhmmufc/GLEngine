@@ -6,11 +6,10 @@
 class Game
 {
 public:
-	Game();
+	Game(const std::string& gameName, int screenWidth = 800, int screenHeight = 600);
     virtual ~Game() = default;
 	int Run();
 protected:
-	virtual void OnInitialise() = 0;
 	virtual void OnUpdate(const float elapsedTime) = 0;
 	virtual void OnInput(ge::Input::InputManager& inputManager) = 0;
 	virtual void OnDraw() = 0;
