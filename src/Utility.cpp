@@ -1,7 +1,5 @@
 #include "Utility.hpp"
 
-#include <SDL.h>
-
 #include <iostream>
 #include <fstream>
 
@@ -61,10 +59,7 @@ namespace GameEngine
 					// Wait for the user the hit the enter key
 					std::string temp;
 					std::getline(std::cin, temp);
-
-					// Close SDL
-					SDL_Quit();
-
+					
 					// Exit with a code of -1 so we know something is wrong
 					std::exit(-1);
 				}

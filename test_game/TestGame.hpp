@@ -2,6 +2,10 @@
 #define GAME_HPP
 
 #include <Game.hpp>
+#include "Player.hpp"
+#include "ParallaxingBackground.hpp"
+#include "Enemy.hpp"
+#include <random>
 
 class TestGame : public Game
 {
@@ -9,14 +13,19 @@ public:
     TestGame();
     ~TestGame() = default;
 protected:
-    virtual void OnInitialise() final;
     virtual void OnUpdate(const float elapsedTime) final;
     virtual void OnInput(ge::Input::InputManager& inputManager) final;
     virtual void OnDraw() final;
 private:
-    // A sprite
-    ge::Rendering::Sprite m_sprite;
-    glm::vec2 m_spriteDir;
+    void AddEnemy();
+    void UpdateEnemies(const float elapsedTime);
+    void UpdateCollision(Enemy& enemy);
+
+    Player m_player;
+    std::vector<ParallaxingBackground> m_backgrounds;
+    std::vector<Enemy> m_enemies;
+
+    std::random_device rd;
 };
 
 #endif

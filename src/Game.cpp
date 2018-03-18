@@ -3,17 +3,19 @@
 // We wish to run our game at 60fps
 const ge::Timing::Time Game::TimePerFrame = ge::Timing::Seconds(1.0f / 60.0f);
 
-Game::Game() : 
+Game::Game(const std::string& gameName, int screenWidth, int screenHeight) :
 	Context(),
     Window(),
 	TextureProgram(),
-	Camera()
+	Camera(),
+    ScreenWidth(screenWidth),
+    ScreenHeight(screenHeight)
 {
 	// initialise our game engine
 	ge::Initialise();
 
 	// create a window
-	Window.CreateWindow("Game", ScreenWidth, ScreenHeight, ge::Rendering::WindowFlags::NONE);
+	Window.CreateWindow(gameName, ScreenWidth, ScreenHeight, ge::Rendering::WindowFlags::NONE);
 
 	// Use a black background colour
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -44,8 +46,6 @@ void Game::LoadShaders()
 
 int Game::Run()
 {
-	OnInitialise();
-
 	// Start our game loop timer
 	ge::Timing::Clock clock;
 

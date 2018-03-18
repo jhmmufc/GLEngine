@@ -22,15 +22,14 @@ set(GLENGINE_SRC
 )
 
 # Define library. Only source files here!
-add_library(gl_engine
+add_library(gl_engine 
     ${GLENGINE_SRC})
    
 # Link to the libs we need
-target_link_libraries(gl_engine
+target_link_libraries(gl_engine PUBLIC
     glew::glew
     SDL2::SDL2
     glm
-    --coverage
 )
 
 # Define headers for this library. PUBLIC headers are used for
